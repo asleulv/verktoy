@@ -1,0 +1,115 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bilde-komprimering</title>
+    <meta name="description"
+        content="Komprimer og endre storleik på bileta dine lokalt i nettlesaren. 100% privat.">
+
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="glass-background"></div>
+
+    <main class="app-container">
+        <header>
+            <div class="nav-back">
+                <a href="../index.html" class="back-link">
+                    <i data-lucide="arrow-left"></i>
+                    <span>Alle verktøy</span>
+                </a>
+            </div>
+            <div class="logo-area">
+                <i data-lucide="image" class="main-icon pulse-soft"></i>
+                <h1>Bilde-komprimering</h1>
+            </div>
+            <p class="subtitle">Reduser filstorleiken på bileta dine ved å justere kvalitet og storleik. All databehandling skjer lokalt.</p>
+        </header>
+
+        <!-- Step 1: Upload -->
+        <section id="upload-section" class="card active">
+            <div class="drop-zone" id="drop-zone">
+                <input type="file" id="file-input" accept="image/jpeg,image/png,image/webp" hidden>
+                <div class="drop-content">
+                    <i data-lucide="image-plus" class="upload-icon"></i>
+                    <h3>Slepp biletet ditt her</h3>
+                    <p>Eller klikk for å velge frå maskina di</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 2: Compression & Preview -->
+        <section id="process-section" class="card hidden">
+            <div class="card-header">
+                <h2><i data-lucide="sliders-horizontal"></i> Innstillingar</h2>
+            </div>
+
+            <div class="config-grid">
+                <div class="config-item">
+                    <label for="quality-range">Kvalitet: <span id="quality-val">80</span>%</label>
+                    <input type="range" id="quality-range" min="1" max="100" value="80" class="custom-range">
+                </div>
+                <div class="config-item">
+                    <label for="scale-range">Storleik (Skala): <span id="scale-val">100</span>%</label>
+                    <input type="range" id="scale-range" min="10" max="100" value="100" class="custom-range">
+                </div>
+                <div class="config-item">
+                    <label for="output-format">Konverter til:</label>
+                    <select id="output-format" class="custom-select">
+                        <option value="image/webp" selected>WebP (Moderne & effektiv)</option>
+                        <option value="image/jpeg">JPEG (Bra for foto)</option>
+                        <option value="image/png">PNG (Tapsfri/gjennomsiktig)</option>
+                    </select>
+                </div>
+            </div>
+            <p id="format-note" style="font-size: 0.85rem; color: var(--text-secondary); margin-top: 1rem; text-align: center;">Merk: PNG er eit tapsfritt format. "Kvalitet" har berre effekt på WebP og JPEG.</p>
+
+            <div class="comparison-grid">
+                <div class="comparison-item">
+                    <div class="comp-label">Original <span id="original-size" class="badge-size">0 KB</span></div>
+                    <div class="img-preview-box">
+                        <img id="original-preview" src="" alt="Original">
+                    </div>
+                </div>
+                <div class="comparison-item">
+                    <div class="comp-label">Komprimert <span id="compressed-size" class="badge-size">0 KB</span> <span id="size-reduction" class="badge-reduction"></span></div>
+                    <div class="img-preview-box">
+                        <img id="compressed-preview" src="" alt="Komprimert">
+                    </div>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <button id="back-btn" class="btn-secondary">Velg nytt bilete</button>
+                <a id="download-btn" class="btn-primary" download="komprimert_bilete.jpg">
+                    <span>Last ned komprimert bilete</span>
+                    <i data-lucide="download"></i>
+                </a>
+            </div>
+        </section>
+
+        <footer>
+            <div class="privacy-badge">
+                <i data-lucide="shield-check"></i>
+                <span>100% lokalt: Ingenting forlet maskina di.</span>
+            </div>
+            <p class="copyright">&copy; 2026 verktøy • asle.dev</p>
+        </footer>
+    </main>
+
+    <script src="skript.js"></script>
+</body>
+
+</html>

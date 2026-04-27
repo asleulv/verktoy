@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tabellvisning | Sjå datafiler oversiktleg</title>
+    <meta name="description"
+        content="Les tabell-data som CSV, TSV, JSON og Excel enkelt og oversiktleg i nettlesaren. 100% privat.">
+
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Data Parsers -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="glass-background"></div>
+
+    <main class="app-container">
+        <header>
+            <div class="nav-back">
+                <a href="../index.html" class="back-link">
+                    <i data-lucide="arrow-left"></i>
+                    <span>Alle verktøy</span>
+                </a>
+            </div>
+            <div class="logo-area">
+                <i data-lucide="table-2" class="main-icon pulse-soft"></i>
+                <h1>Tabellvisning</h1>
+            </div>
+            <p class="subtitle">Gjer uoversiktlege datafiler om til tydelege, søkbare tabellar. Støttar CSV, TSV, JSON og Excel.</p>
+        </header>
+
+        <!-- Step 1: Upload -->
+        <section id="upload-section" class="card active">
+            <div class="drop-zone" id="drop-zone">
+                <input type="file" id="file-input" accept=".csv,.json,.xlsx,.xls,.ods,.tsv,.txt" hidden>
+                <div class="drop-content">
+                    <i data-lucide="file-spreadsheet" class="upload-icon"></i>
+                    <h3>Slepp fila di her</h3>
+                    <p>Eller klikk for å velge CSV, JSON eller Excel</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 2: Table Viewer -->
+        <section id="viewer-section" class="card hidden">
+            <div class="table-controls">
+                <div class="search-box">
+                    <i data-lucide="search"></i>
+                    <input type="text" id="search-input" placeholder="Søk i rader...">
+                </div>
+                <div id="status-msg" class="status-msg hidden"></div>
+                <div class="stats-badge">
+                    <span id="row-count">0</span> rader funne
+                </div>
+                <div class="actions">
+                    <button id="reset-btn" class="btn-secondary btn-small">
+                        <i data-lucide="file-plus"></i> Ny fil
+                    </button>
+                </div>
+            </div>
+
+            <div class="table-container">
+                <div class="table-scroll" id="table-scroll">
+                    <table id="data-table">
+                        <thead>
+                            <tr id="table-header"></tr>
+                        </thead>
+                        <tbody id="table-body">
+                            <!-- Rows injected here -->
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+
+            <div id="no-results" class="hidden">
+                <p>Ingen resultat som passar søket ditt.</p>
+            </div>
+            
+            <div class="pagination" id="pagination">
+                <button id="prev-page" class="btn-page"><i data-lucide="chevron-left"></i></button>
+                <span id="page-info">Side 1 av 1</span>
+                <button id="next-page" class="btn-page"><i data-lucide="chevron-right"></i></button>
+            </div>
+        </section>
+
+        <footer>
+            <div class="privacy-badge">
+                <i data-lucide="shield-check"></i>
+                <span>100% lokalt: Ingenting forlet maskina di.</span>
+            </div>
+            <p class="copyright">&copy; 2026 verktøy • asle.dev</p>
+        </footer>
+    </main>
+
+    <script src="skript.js"></script>
+</body>
+
+</html>

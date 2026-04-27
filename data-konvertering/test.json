@@ -1,0 +1,23 @@
+[
+  {
+    "id": 101,
+    "produkt": "Laptop Pro",
+    "pris": 12000,
+    "lager": 15,
+    "detaljer": { "merke": "Fruit", "år": 2023 }
+  },
+  {
+    "id": 102,
+    "produkt": "Smarttelefon Ultra",
+    "pris": 8500,
+    "lager": 42,
+    "detaljer": { "merke": "Galaxy", "år": 2024 }
+  },
+  {
+    "id": 103,
+    "produkt": "Trådlause Klokker",
+    "pris": 2500,
+    "lager": 120,
+    "detaljer": { "merke": "Sonic", "år": 2023 }
+  }
+]

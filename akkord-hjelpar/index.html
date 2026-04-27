@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Akkord-hjelpar | Transponer akkordar live</title>
+    <meta name="description"
+        content="Lim inn tekst med akkordar og transponer dei live til den tonearten du vil ha. Lokalt og privat.">
+
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="glass-background"></div>
+
+    <main class="app-container">
+        <header>
+            <div class="nav-back">
+                <a href="../index.html" class="back-link">
+                    <i data-lucide="arrow-left"></i>
+                    <span>Alle verktøy</span>
+                </a>
+            </div>
+            <div class="logo-area">
+                <i data-lucide="music" class="main-icon pulse-soft"></i>
+                <h1>Akkord-hjelpar</h1>
+            </div>
+            <p class="subtitle">Lim inn teksten din med akkordar her for å transponere dei live. Me bevarer alle mellomrom slik at akkordane framleis står på rett plass.</p>
+        </header>
+
+        <section class="card active">
+            <div class="main-grid">
+                <!-- Input Area -->
+                <div class="input-pane">
+                    <div class="pane-header">
+                        <label>Lim inn originaltekst:</label>
+                        <button id="clear-btn" class="btn-secondary btn-mini">Tøm alt</button>
+                    </div>
+                    <textarea id="input-text" placeholder="Lim inn songtekst med akkordar her..."></textarea>
+                </div>
+
+                <!-- Controls -->
+                <div class="control-pane">
+                    <div class="control-box">
+                        <label>Toneart (Semitonar):</label>
+                        <div class="semitone-selector">
+                            <button id="step-down" class="btn-step">-</button>
+                            <span id="semitone-val">0</span>
+                            <button id="step-up" class="btn-step">+</button>
+                        </div>
+                        <input type="range" id="transpose-range" min="-11" max="11" value="0">
+                        <p class="hint">Flytt slideren for å transponere live.</p>
+                    </div>
+                    
+                    <button id="copy-btn" class="btn-primary">
+                        <i data-lucide="copy"></i> Kopier ferdig format
+                    </button>
+                </div>
+
+                <!-- Output Area -->
+                <div class="output-pane">
+                    <div class="pane-header">
+                        <label>Transponert resultat:</label>
+                    </div>
+                    <pre id="output-display" class="output-display"></pre>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="privacy-badge">
+                <i data-lucide="shield-check"></i>
+                <span>All tekstbehandling skjer lokalt i din nettleser. Ingen data vert sendt ut.</span>
+            </div>
+            <p class="copyright">&copy; 2026 verktøy • asle.dev</p>
+        </footer>
+    </main>
+
+    <script src="skript.js"></script>
+</body>
+
+</html>

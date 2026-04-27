@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tekst-rydding | Formatvisning & vask</title>
+    <meta name="description"
+        content="Vask, konverter og rydd i teksten din. Støttar Markdown, HTML og vanleg tekst. 100% privat.">
+
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- Markdown & HTML Libraries -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/marked/4.3.0/marked.min.js"></script>
+    <script src="https://unpkg.com/turndown/dist/turndown.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="glass-background"></div>
+
+    <main class="app-container">
+        <header>
+            <div class="nav-back">
+                <a href="../index.html" class="back-link">
+                    <i data-lucide="arrow-left"></i>
+                    <span>Alle verktøy</span>
+                </a>
+            </div>
+            <div class="logo-area">
+                <i data-lucide="file-text" class="main-icon pulse-soft"></i>
+                <h1>Tekst-rydding</h1>
+            </div>
+            <p class="subtitle">Rydd i tekst, vask HTML og konverter mellom Markdown og andre format lokalt og sikkert.</p>
+        </header>
+
+        <section class="card active">
+            <div class="split-view">
+                <div class="view-pane">
+                    <div class="pane-header">
+                        <h3>Input</h3>
+                        <div class="pane-stats">
+                            <span id="char-count-in">0</span> teikn | <span id="word-count-in">0</span> ord
+                        </div>
+                    </div>
+                    <textarea id="input-text" placeholder="Lim inn teksten din her (Markdown, HTML eller vanleg tekst)..."></textarea>
+                    <div class="pane-footer">
+                        <button id="clear-btn" class="btn-secondary btn-small">Tøm</button>
+                    </div>
+                </div>
+
+                <div class="view-pane">
+                    <div class="pane-header">
+                        <h3>Output</h3>
+                        <div class="pane-stats">
+                            <span id="char-count-out">0</span> teikn | <span id="word-count-out">0</span> ord
+                        </div>
+                    </div>
+                    <textarea id="output-text" placeholder="Resultatet dukkar opp her..." readonly></textarea>
+                    <div class="pane-footer">
+                        <button id="use-src-btn" class="btn-secondary btn-small" style="margin-right: 0.5rem;">
+                             <i data-lucide="arrow-left-to-line"></i> Bruk som kjelde
+                        </button>
+                        <button id="copy-btn" class="btn-primary btn-small">
+                            <i data-lucide="copy"></i> Kopier
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div class="toolbar">
+                <div class="format-selection">
+                    <label>Vel output-format:</label>
+                    <div class="tab-switcher">
+                        <button class="tab-btn active" data-format="markdown">Markdown</button>
+                        <button class="tab-btn" data-format="html">HTML</button>
+                        <button class="tab-btn" data-format="plain">Vanleg tekst</button>
+                    </div>
+                </div>
+
+                <div class="group">
+                    <label>Smarte transformasjonar:</label>
+                    <div class="button-grid">
+                        <button id="btn-clean" class="btn-action">Vask (Whitespace)</button>
+                        <button id="btn-super" class="btn-action primary-border">Supervask (Alt)</button>
+                        <button id="btn-strip" class="btn-action">Fjern all kode</button>
+                        <button id="btn-upper" class="btn-action">STORE</button>
+                        <button id="btn-lower" class="btn-action">små</button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="privacy-badge">
+                <i data-lucide="shield-check"></i>
+                <span>100% lokalt: Ingenting forlet maskina di.</span>
+            </div>
+            <p class="copyright">&copy; 2026 verktøy • asle.dev</p>
+        </footer>
+    </main>
+
+    <script src="skript.js"></script>
+</body>
+
+</html>

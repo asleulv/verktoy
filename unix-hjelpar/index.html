@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Unix-hjelpar | CHMOD & Kommando-oversikt</title>
+    <meta name="description"
+        content="Hjelpverktøy for terminalen: CHMOD-kalkulator og søkbar oversikt over Unix/Linux-kommandoar.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&family=Fira+Code:wght@400;500&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="glass-background"></div>
+
+    <main class="app-container">
+        <header>
+            <div class="nav-back">
+                <a href="../index.html" class="back-link">
+                    <i data-lucide="arrow-left"></i>
+                    <span>Alle verktøy</span>
+                </a>
+            </div>
+            <div class="logo-area">
+                <i data-lucide="terminal" class="main-icon pulse-soft"></i>
+                <h1>Unix-hjelpar</h1>
+            </div>
+            <p class="subtitle">Alt du treng for å meistre den svarte boksen. Kalkulator for CHMOD og søkbar oversikt
+                over dei viktigaste kommandoane.</p>
+        </header>
+
+        <section class="card active">
+            <!-- Tabs -->
+            <div class="tab-switcher">
+                <button class="tab-btn active" data-tab="chmod">CHMOD-kalkulator</button>
+                <button class="tab-btn" data-tab="commands">Kommando-oversikt</button>
+            </div>
+
+            <!-- CHMOD Tab -->
+            <div id="tab-chmod" class="tab-content active">
+                <div class="chmod-grid">
+                    <div class="chmod-controls">
+                        <!-- Owner -->
+                        <div class="chmod-group">
+                            <label>Eigar (User)</label>
+                            <div class="checkbox-group">
+                                <label class="check-container">Read (4) <input type="checkbox" data-bit="400"
+                                        checked><span class="checkmark"></span></label>
+                                <label class="check-container">Write (2) <input type="checkbox" data-bit="200"
+                                        checked><span class="checkmark"></span></label>
+                                <label class="check-container">Execute (1) <input type="checkbox" data-bit="100"
+                                        checked><span class="checkmark"></span></label>
+                            </div>
+                        </div>
+                        <!-- Group -->
+                        <div class="chmod-group">
+                            <label>Gruppe (Group)</label>
+                            <div class="checkbox-group">
+                                <label class="check-container">Read (4) <input type="checkbox" data-bit="40"><span
+                                        class="checkmark"></span></label>
+                                <label class="check-container">Write (2) <input type="checkbox" data-bit="20"><span
+                                        class="checkmark"></span></label>
+                                <label class="check-container">Execute (1) <input type="checkbox" data-bit="10"><span
+                                        class="checkmark"></span></label>
+                            </div>
+                        </div>
+                        <!-- Public -->
+                        <div class="chmod-group">
+                            <label>Andre (Public)</label>
+                            <div class="checkbox-group">
+                                <label class="check-container">Read (4) <input type="checkbox" data-bit="4"><span
+                                        class="checkmark"></span></label>
+                                <label class="check-container">Write (2) <input type="checkbox" data-bit="2"><span
+                                        class="checkmark"></span></label>
+                                <label class="check-container">Execute (1) <input type="checkbox" data-bit="1"><span
+                                        class="checkmark"></span></label>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="chmod-result">
+                        <div class="res-box">
+                            <span class="res-label">Numerisk kode:</span>
+                            <h2 id="chmod-numeric">700</h2>
+                        </div>
+                        <div class="res-box">
+                            <span class="res-label">Symbolsk kode:</span>
+                            <h2 id="chmod-symbolic">rwx------</h2>
+                        </div>
+                        <div class="res-box terminal-cmd">
+                            <span class="res-label">Terminal kommando:</span>
+                            <code id="chmod-command">chmod 700 filnamn</code>
+                            <button id="copy-cmd" class="btn-copy"><i data-lucide="copy"></i></button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Commands Tab -->
+            <div id="tab-commands" class="tab-content">
+                <div class="cmd-toolbar">
+                    <div class="search-box">
+                        <i data-lucide="search"></i>
+                        <input type="text" id="cmd-search"
+                            placeholder="Søk i kommandoar (t.d. 'liste', 'slett', 'nettverk')...">
+                    </div>
+                </div>
+                <div class="cmd-list" id="cmd-list">
+                    <!-- Commands injected here -->
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="privacy-badge">
+                <i data-lucide="shield-check"></i>
+                <span>100% lokalt: Ingenting du søker på eller reknar ut forlet maskina di.</span>
+            </div>
+            <p class="copyright">&copy; 2026 verktøy • asle.dev</p>
+        </footer>
+    </main>
+
+    <script src="skript.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>PDF-kvern | Slå saman og splitt PDF lokalt</title>
+    <meta name="description"
+        content="Slå saman PDF-filer, trekk ut enkeltsider eller fjern sider frå PDF-dokument. All behandling skjer lokalt og privat.">
+
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- PDF-Lib for local processing -->
+    <script src="https://unpkg.com/pdf-lib@1.17.1/dist/pdf-lib.min.js"></script>
+    
+    <!-- PDF.js for rendering previews -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js"></script>
+    <script>pdfjsLib.GlobalWorkerOptions.workerSrc = 'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js';</script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="glass-background"></div>
+
+    <main class="app-container">
+        <header>
+            <div class="nav-back">
+                <a href="../index.html" class="back-link">
+                    <i data-lucide="arrow-left"></i>
+                    <span>Alle verktøy</span>
+                </a>
+            </div>
+            <div class="logo-area">
+                <i data-lucide="scissors" class="main-icon pulse-soft"></i>
+                <h1>PDF-kvern</h1>
+            </div>
+            <p class="subtitle">Maksimalt personvern for dine dokument. Slå saman, splitt eller slett sider frå PDF-ar rett i nettlesaren din.</p>
+        </header>
+
+        <section class="card active">
+            <!-- Mode Switcher -->
+            <div class="mode-switcher">
+                <button class="mode-btn active" data-mode="merge">
+                    <i data-lucide="plus-square"></i> Slå saman PDF
+                </button>
+                <button class="mode-btn" data-mode="split">
+                    <i data-lucide="scissors"></i> Splitt / Slett sider
+                </button>
+            </div>
+
+            <!-- Merge View -->
+            <div id="view-merge" class="view-content active">
+                <div class="drop-zone" id="drop-zone-merge">
+                    <input type="file" id="file-input-merge" accept=".pdf" multiple hidden>
+                    <div class="drop-text">
+                        <i data-lucide="files" class="upload-icon"></i>
+                        <h3>Slepp PDF-filer her</h3>
+                        <p>Dra inn alle filene du vil slå saman (me bevarer rekkefølga).</p>
+                    </div>
+                </div>
+
+                <div id="file-list-area" class="hidden">
+                    <div class="list-header">
+                        <h4>Filer klar for kverning:</h4>
+                        <span id="file-total-count">0 filer</span>
+                    </div>
+                    <ul id="file-list" class="pdf-file-list">
+                        <!-- Files listed here -->
+                    </ul>
+                    <div class="action-bar">
+                        <button id="clear-merge" class="btn-secondary">Tøm alt</button>
+                        <button id="run-merge" class="btn-primary">
+                            <i data-lucide="combine"></i> Lagra ny PDF
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Split View -->
+            <div id="view-split" class="view-content">
+                <div id="split-upload-area">
+                    <div class="drop-zone" id="drop-zone-split">
+                        <input type="file" id="file-input-split" accept=".pdf" hidden>
+                        <div class="drop-text">
+                            <i data-lucide="file-up" class="upload-icon"></i>
+                            <h3>Slepp éi PDF-fil her</h3>
+                            <p>For å trekke ut sider eller fjerne deler av dokumentet.</p>
+                        </div>
+                    </div>
+                </div>
+
+                <div id="split-config-area" class="hidden">
+                    <div class="split-info">
+                        <div class="pdf-preview-box">
+                            <i data-lucide="file-text"></i>
+                            <div class="pdf-meta">
+                                <strong id="split-filename">kontrakt.pdf</strong>
+                                <span id="split-page-count">0 sider funne</span>
+                            </div>
+                        </div>
+                        <button id="reset-split" class="btn-secondary btn-mini">Byt fil</button>
+                    </div>
+
+                    <div class="split-visuals">
+                        <label>Klikk på sidene du vil kverne ut:</label>
+                        <div id="thumb-grid" class="thumb-grid">
+                            <!-- Thumbnails from pdf.js here -->
+                            <div class="loading-thumbs">Tegner sider...</div>
+                        </div>
+                    </div>
+
+                    <div class="split-inputs">
+                        <div class="input-group">
+                            <label>Hvilke sider vil du behalde?</label>
+                            <input type="text" id="pages-input" placeholder="t.d. 1-3, 5, 8-10">
+                            <p class="hint">Bruk komma for enkelt-sider og bindestrek for områder.</p>
+                        </div>
+                        <button id="run-split" class="btn-primary">
+                            <i data-lucide="save"></i> Lagra ny utgåve
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="privacy-badge">
+                <i data-lucide="shield-check"></i>
+                <span>100% lokalt: Ingenting forlet maskina di.</span>
+            </div>
+            <p class="copyright">&copy; 2026 verktøy • asle.dev</p>
+        </footer>
+    </main>
+
+    <script src="skript.js"></script>
+</body>
+
+</html>

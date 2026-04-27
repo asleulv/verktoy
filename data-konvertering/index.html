@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Datakonvertering</title>
+    <meta name="description"
+        content="Eit alt-i-eitt verktøy for å konvertere mellom CSV, JSON, Excel og PDF med fullt kolonneval.">
+
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- PapaParse for CSV/TSV parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+    <!-- SheetJS for Excel generation & parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="glass-background"></div>
+
+    <main class="app-container">
+        <header>
+            <div class="nav-back">
+                <a href="../index.html" class="back-link">
+                    <i data-lucide="arrow-left"></i>
+                    <span>Alle verktøy</span>
+                </a>
+            </div>
+            <div class="logo-area">
+                <i data-lucide="refresh-cw" class="main-icon rotate-icon"></i>
+                <h1>Datakonvertering</h1>
+            </div>
+            <p class="subtitle">Eit kraftig verktøy for filkonvertering og datavasking.
+                Støttar CSV, JSON, Excel, ODS og meir.</p>
+        </header>
+
+        <!-- Step 1: Upload -->
+        <section id="upload-section" class="card active">
+            <div class="drop-zone" id="drop-zone">
+                <input type="file" id="file-input" accept=".csv,.json,.xlsx,.xls,.ods,.tsv" hidden>
+                <div class="drop-content">
+                    <i data-lucide="file-up" class="upload-icon"></i>
+                    <h3>Slepp fila di her</h3>
+                    <p>Støttar CSV, JSON, Excel, ODS, TSV og TXT</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Step 2: Configuration & Column Selection -->
+        <section id="column-section" class="card hidden">
+            <div class="card-header">
+                <h2><i data-lucide="settings-2"></i> Konfigurasjon</h2>
+            </div>
+
+            <div class="config-grid">
+                <div class="config-item">
+                    <label for="output-format">Output-format:</label>
+                    <select id="output-format" class="custom-select">
+                        <option value="xlsx">Excel (.xlsx)</option>
+                        <option value="csv">CSV (.csv)</option>
+                        <option value="json">JSON (.json)</option>
+                        <option value="html">HTML Tabell (.html)</option>
+                    </select>
+                </div>
+                <div class="config-item">
+                    <label>Antall rader funne:</label>
+                    <span id="row-count" class="badge">0</span>
+                </div>
+            </div>
+
+            <div class="subheader">
+                <h3><i data-lucide="columns"></i> Velg kolonner</h3>
+                <div class="selection-actions">
+                    <button id="select-all-btn" class="btn-secondary btn-small">Alle</button>
+                    <button id="deselect-all-btn" class="btn-secondary btn-small">Ingen</button>
+                </div>
+            </div>
+
+            <div class="column-grid" id="column-grid">
+                <!-- Columns will be injected here -->
+            </div>
+
+            <div class="preview-area">
+                <div class="subheader">
+                    <h3><i data-lucide="eye"></i> Forhandsvisning (første 5 rader)</h3>
+                </div>
+                <div class="preview-scroll">
+                    <table id="preview-table">
+                        <!-- Preview will be injected here -->
+                    </table>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <button id="back-btn" class="btn-secondary">Tilbake</button>
+                <button id="convert-btn" class="btn-primary">
+                    <span>Konverter og last ned</span>
+                    <i data-lucide="download"></i>
+                </button>
+            </div>
+        </section>
+
+        <!-- Step 3: Success -->
+        <section id="success-section" class="card hidden">
+            <div class="success-content">
+                <div class="success-icon-wrapper">
+                    <i data-lucide="party-popper" class="success-icon"></i>
+                </div>
+                <h2>Glimrande!</h2>
+                <p>Dataene dine er vaska, filtrert og konvertert.</p>
+                <button id="reset-btn" class="btn-primary">Konverter noko meir</button>
+            </div>
+        </section>
+
+        <footer>
+            <div class="privacy-badge">
+                <i data-lucide="shield-check"></i>
+                <span>100% lokalt: Ingenting forlet maskina di.</span>
+            </div>
+            <p class="copyright">&copy; 2026 verktøy • asle.dev</p>
+        </footer>
+    </main>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

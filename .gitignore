@@ -1,0 +1,31 @@
+# OS files
+.DS_Store
+Thumbs.db
+
+# IDEs
+.vscode/
+.idea/
+*.swp
+*.swo
+
+# Node (in case you use it for local dev)
+node_modules/
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# AI / Assistant files
+.gemini/
+.antigravity/
+
+# Docker artifacts
+Dockerfile
+docker-compose.yml
+.dockerignore
+
+# If you want to keep deployment files in git, 
+# you can comment out the lines above. 
+# Usually it's good to have them in git though.
+# !Dockerfile
+# !docker-compose.yml
+# !.dockerignore

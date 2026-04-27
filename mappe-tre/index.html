@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Kode-samlar | Lynx-rask samling</title>
+    <meta name="description"
+        content="Samle prosjektet ditt til éi strukturert tekstblokk for AI-prompts. Optimalisert for store mapper.">
+
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="glass-background"></div>
+
+    <main class="app-container">
+        <header>
+            <div class="nav-back">
+                <a href="../index.html" class="back-link">
+                    <i data-lucide="arrow-left"></i>
+                    <span>Alle verktøy</span>
+                </a>
+            </div>
+            <div class="logo-area">
+                <i data-lucide="folder-tree" class="main-icon pulse-soft"></i>
+                <h1>Mappe-tre</h1>
+            </div>
+            <p class="subtitle">Slepp mappen din her for å generere eit visuelt katalog-tre. Perfekt for å gi AI-en full
+                oversikt over strukturen din på eit blunk.</p>
+        </header>
+
+        <section class="card active">
+            <div class="drop-zone" id="drop-zone">
+                <input type="file" id="file-input" multiple hidden>
+                <div class="drop-content">
+                    <i data-lucide="plus-circle" class="upload-icon"></i>
+                    <h3>Slepp mappen din her</h3>
+                    <p>Eller velg filer manuelt</p>
+                </div>
+            </div>
+
+            <div id="summary-section" class="hidden">
+                <div class="summary-card">
+                    <div class="summary-info">
+                        <div class="stat-item">
+                            <span class="stat-label">Filer funne</span>
+                            <span id="file-count" class="stat-value">0</span>
+                        </div>
+                        <div class="stat-item">
+                            <span class="stat-label">Mapper</span>
+                            <span id="dir-count" class="stat-value">0</span>
+                        </div>
+                    </div>
+                    <div id="status-text" class="status-msg">Skannar prosjektet...</div>
+                    <div class="summary-actions">
+                        <button id="clear-btn" class="btn-secondary">Tøm alt</button>
+                        <button id="build-btn" class="btn-primary">
+                            <i data-lucide="folder-tree"></i> Teikn Prosjekt-tre
+                        </button>
+                    </div>
+                </div>
+            </div>
+
+            <div id="result-section" class="hidden">
+                <div class="result-summary">
+                    <div class="pane-header">
+                        <label>Katalog-tre for ditt prosjekt:</label>
+                    </div>
+                    <pre id="tree-display" class="tree-display"></pre>
+                </div>
+
+                <div class="action-grid">
+                    <button id="copy-btn" class="btn-primary">
+                        <i data-lucide="copy"></i> Kopier tre-struktur
+                    </button>
+                    <button id="download-btn" class="btn-secondary">
+                        <i data-lucide="download"></i> Last ned som .txt
+                    </button>
+                </div>
+                <textarea id="output-text" class="hidden" readonly></textarea>
+            </div>
+        </section>
+
+        <footer>
+            <div class="privacy-badge">
+                <i data-lucide="shield-check"></i>
+                <span>100% lokalt: Ingenting forlet maskina di.</span>
+            </div>
+            <p class="copyright">&copy; 2026 verktøy • asle.dev</p>
+        </footer>
+    </main>
+
+    <script src="skript.js"></script>
+</body>
+
+</html>

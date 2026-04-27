@@ -1,0 +1,142 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Prompt-hjelpar | Bygg betre AI-prompts</title>
+    <meta name="description"
+        content="Strukturer dine AI-prompts for betre resultat. Bruk rolle-oppgåve-kontekst rammeverket lokalt i din nettlesar.">
+
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="glass-background"></div>
+
+    <main class="app-container">
+        <header>
+            <div class="nav-back">
+                <a href="../index.html" class="back-link">
+                    <i data-lucide="arrow-left"></i>
+                    <span>Alle verktøy</span>
+                </a>
+            </div>
+            <div class="logo-area">
+                <i data-lucide="sparkles" class="main-icon pulse-soft"></i>
+                <h1>Prompt-hjelpar</h1>
+            </div>
+            <p class="subtitle">Fyll inn felta nedanfor for å byggje ein strukturert prompt som gir deg mykje betre svar frå AI-en. All tekst vert verande på di maskin.</p>
+        </header>
+
+        <section class="card active">
+            <!-- New: Smart Upgrade & Templates -->
+            <div class="top-controls">
+                <div class="input-group">
+                    <label for="raw-input">
+                        <i data-lucide="zap"></i> Skriv tanken din her (Smart Oppgradering):
+                    </label>
+                    <div class="upgrade-row">
+                        <input type="text" id="raw-input" placeholder="T.d. Add a new component using the song api...">
+                        <button id="upgrade-btn" class="btn-primary btn-small">💾 Oppgrader Prompt</button>
+                    </div>
+                </div>
+                <div class="template-row">
+                    <span>Hurtig-start:</span>
+                    <button onclick="applyTemplate('coder')" class="btn-template">Kodespesialist</button>
+                    <button onclick="applyTemplate('writer')" class="btn-template">Tekst-vaskar</button>
+                    <button onclick="applyTemplate('summary')" class="btn-template">Oppsummering</button>
+                    <button onclick="applyTemplate('brainstorm')" class="btn-template">Idémyldring</button>
+                </div>
+            </div>
+
+            <div class="builder-grid">
+                <!-- Form Area -->
+                <div class="form-area">
+                    <div class="input-group">
+                        <label for="persona">
+                            <i data-lucide="user-cog"></i> Rolle (Persona)
+                        </label>
+                        <textarea id="persona" placeholder="T.d. Du er ein ekspert på nynorsk rettskriving..."></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="task">
+                            <i data-lucide="target"></i> Oppgåve (Task)
+                        </label>
+                        <textarea id="task" placeholder="T.d. Skriv om denne teksten til ein meir profesjonell tone..."></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="context">
+                            <i data-lucide="info"></i> Kontekst (Context)
+                        </label>
+                        <textarea id="context" placeholder="T.d. Mottakarane er studentar på universitetet..."></textarea>
+                    </div>
+
+                    <div class="input-group">
+                        <label for="format">
+                            <i data-lucide="list-checks"></i> Format / Vilkår
+                        </label>
+                        <textarea id="format" placeholder="T.d. Bruk punktlister, maks 3 avsnitt, nynorsk..."></textarea>
+                    </div>
+
+                    <div class="tweak-controls">
+                        <label>Forsterking:</label>
+                        <div class="checkbox-group">
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="step-by-step">
+                                <span>Tenk steg for steg</span>
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="be-critical">
+                                <span>Vær kritisk og objektiv</span>
+                            </label>
+                            <label class="custom-checkbox">
+                                <input type="checkbox" id="ask-first">
+                                <span>Spør om du treng meir info</span>
+                            </label>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Result Area -->
+                <div class="result-area">
+                    <div class="pane-header">
+                        <h3>Ferdig Prompt</h3>
+                        <div class="controls">
+                           <button id="clear-btn" class="btn-secondary btn-mini">Tøm</button>
+                        </div>
+                    </div>
+                    <textarea id="final-prompt" readonly placeholder="Byggingen skjer her..."></textarea>
+                    <div class="pane-footer">
+                        <button id="copy-btn" class="btn-primary">
+                            <i data-lucide="copy"></i> Kopier Super-prompt
+                        </button>
+                    </div>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="privacy-badge">
+                <i data-lucide="shield-check"></i>
+                <span>100% lokalt: Ingenting forlet maskina di.</span>
+            </div>
+            <p class="copyright">&copy; 2026 verktøy • asle.dev</p>
+        </footer>
+    </main>
+
+    <script src="skript.js"></script>
+</body>
+
+</html>
