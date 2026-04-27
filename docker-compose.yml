@@ -1,0 +1,16 @@
+version: '3.8'
+
+services:
+  verktøy:
+    build: .
+    container_name: verktoy
+    restart: always
+    environment:
+      - VIRTUAL_HOST=tools.asle.dev
+      - LETSENCRYPT_HOST=tools.asle.dev
+    networks:
+      - proxy
+
+networks:
+  proxy:
+    external: true

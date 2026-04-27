@@ -18,10 +18,6 @@ yarn-error.log*
 .gemini/
 .antigravity/
 
-# Docker artifacts
-Dockerfile
-docker-compose.yml
-.dockerignore
 
 # If you want to keep deployment files in git, 
 # you can comment out the lines above. 
