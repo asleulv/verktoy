@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Excel-splittar | Del opp store filer</title>
+    <meta name="description"
+        content="Del opp enorme Excel-filer i fleire, mindre filer. 100% lokalt i nettlesaren din.">
+
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- SheetJS for Excel -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <!-- JSZip for pakking av filene -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jszip/3.10.1/jszip.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="glass-background"></div>
+
+    <main class="app-container">
+        <header>
+            <div class="nav-back">
+                <a href="../index.html" class="back-link">
+                    <i data-lucide="arrow-left"></i>
+                    <span>Alle verktøy</span>
+                </a>
+            </div>
+            <div class="logo-area">
+                <i data-lucide="split-square-horizontal" class="main-icon pulse-soft"></i>
+                <h1>Excel-splittar</h1>
+            </div>
+            <p class="subtitle">Del opp gigantiske Excel-filer i fleire, handterbare bitar. Du bestemmer kor mange filer du vil ha, og kva som skal skje med overskriftene. Lastast ned som éi praktisk ZIP-fil.</p>
+        </header>
+
+        <!-- Steg 1: Last opp -->
+        <section id="upload-section" class="card active">
+            <div class="drop-zone" id="drop-zone">
+                <input type="file" id="file-input" accept=".xlsx,.xls,.ods,.csv" hidden>
+                <div class="drop-content">
+                    <i data-lucide="file-spreadsheet" class="upload-icon"></i>
+                    <h3>Slepp Excel-fila di her</h3>
+                    <p>Eller klikk for å bla gjennom</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- Steg 2: Innstillingar -->
+        <section id="config-section" class="card hidden">
+            <div class="config-header">
+                <h2><i data-lucide="settings-2"></i> Tilpass splittinga</h2>
+                <div class="file-info-badge">
+                    <i data-lucide="table"></i> <span id="total-rows">0</span> rader funne
+                </div>
+            </div>
+
+            <div class="config-grid">
+                <!-- Kor mange filer -->
+                <div class="config-group">
+                    <label for="num-splits">Kor mange filer vil du ha ut?</label>
+                    <div class="input-with-info">
+                        <input type="number" id="num-splits" min="2" max="100" value="4">
+                        <div class="info-text">
+                            <i data-lucide="info"></i> Gir ca <strong id="rows-per-file">0</strong> rader pr. fil
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Overskrifter -->
+                <div class="config-group">
+                    <label>Har første rad overskrifter (table headers)?</label>
+                    <label class="toggle-switch">
+                        <input type="checkbox" id="has-headers" checked>
+                        <span class="slider"></span>
+                        <span class="label-text" id="has-headers-text">Ja, første rad er overskrift</span>
+                    </label>
+                </div>
+
+                <div class="config-group" id="header-options-group">
+                    <label for="header-behavior">Kva skal me gjere med overskrifta?</label>
+                    <select id="header-behavior" class="custom-select">
+                        <option value="always">Hald på overskrifta i alle nye filer</option>
+                        <option value="first">Hald på ho berre i den første fila</option>
+                        <option value="never">Fjern overskrifta heilt</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="card-footer">
+                <button id="reset-btn" class="btn-secondary">Start på nytt</button>
+                <button id="process-btn" class="btn-primary">
+                    <i data-lucide="scissors"></i> Splitt og pakk ZIP
+                </button>
+            </div>
+        </section>
+
+        <!-- Steg 3: Suksess -->
+        <section id="success-section" class="card hidden">
+            <div class="success-content">
+                <div class="success-icon-wrapper">
+                    <i data-lucide="folder-archive" class="success-icon pulse-soft"></i>
+                </div>
+                <h2>Ferdig pakka!</h2>
+                <p>Nedlastinga av ZIP-fila di skal ha starta. Den inneheld <strong id="final-file-count">0</strong> filer.</p>
+                <div style="margin-top: 2rem;">
+                    <button id="start-over-btn" class="btn-primary">Splitt ei ny fil</button>
+                </div>
+            </div>
+        </section>
+
+        <footer>
+            <div class="privacy-badge">
+                <i data-lucide="shield-check"></i>
+                <span>100% lokalt: Ingenting forlet maskina di.</span>
+            </div>
+            <p class="copyright">&copy; 2026 verktøy • asle.dev</p>
+        </footer>
+    </main>
+
+    <script src="skript.js"></script>
+</body>
+
+</html>

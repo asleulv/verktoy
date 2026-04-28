@@ -1,0 +1,128 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Liste-vaskar | Sammenlign og reins lister</title>
+    <meta name="description"
+        content="Finn e-postadresser i ei Excel-fil og fjern desse frå ei CSV-fil. All databehandling skjer lokalt.">
+
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap"
+        rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <!-- PapaParse for CSV parsing -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.4.1/papaparse.min.js"></script>
+
+    <!-- SheetJS for Excel reading -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
+
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="glass-background"></div>
+
+    <main class="app-container">
+        <header>
+            <div class="nav-back">
+                <a href="../index.html" class="back-link">
+                    <i data-lucide="arrow-left"></i>
+                    <span>Alle verktøy</span>
+                </a>
+            </div>
+            <div class="logo-area">
+                <i data-lucide="filter" class="main-icon pulse-soft"></i>
+                <h1>Liste-vaskar</h1>
+            </div>
+            <p class="subtitle">Sjekk ei CSV-fil mot ei Excel-fil. Viss ein e-postadresse frå Excel finst i CSV-fila, vert heile den rada fjerna. Resultatet er ei ny, vaska CSV-fil.</p>
+        </header>
+
+        <!-- Step 1: Upload Files -->
+        <section id="upload-section" class="card active">
+            <div class="upload-grid">
+                <div class="upload-box" id="drop-excel">
+                    <div class="box-header">
+                        <span class="step-num">1</span>
+                        <h3>Fjerningsliste (Excel)</h3>
+                    </div>
+                    <input type="file" id="excel-input" accept=".xlsx,.xls,.ods" hidden>
+                    <div class="drop-content">
+                        <i data-lucide="file-spreadsheet" class="upload-icon"></i>
+                        <p>Slepp Excel-fila her</p>
+                        <span class="file-status" id="excel-status">Ingenting vald</span>
+                    </div>
+                </div>
+
+                <div class="upload-box" id="drop-csv">
+                    <div class="box-header">
+                        <span class="step-num">2</span>
+                        <h3>Hovudliste (CSV)</h3>
+                    </div>
+                    <input type="file" id="csv-input" accept=".csv,.txt" hidden>
+                    <div class="drop-content">
+                        <i data-lucide="file-text" class="upload-icon"></i>
+                        <p>Slepp CSV-fila her</p>
+                        <span class="file-status" id="csv-status">Ingenting vald</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="action-bar">
+                <button id="process-btn" class="btn-primary" disabled>
+                    <i data-lucide="play"></i> Vask listene
+                </button>
+            </div>
+        </section>
+
+        <!-- Step 2: Results -->
+        <section id="result-section" class="card hidden">
+            <div class="result-header">
+                <h2><i data-lucide="check-circle" style="color: var(--success)"></i> Vasking fullført!</h2>
+                <div class="stats-row">
+                    <div class="stat-box">
+                        <span class="stat-value" id="stat-removed">0</span>
+                        <span class="stat-label">Rader fjerna</span>
+                    </div>
+                    <div class="stat-box">
+                        <span class="stat-value" id="stat-kept">0</span>
+                        <span class="stat-label">Rader bevart</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="examples-area">
+                <h3><i data-lucide="list-x"></i> Dømer på fjerna e-postar:</h3>
+                <ul id="examples-list" class="examples-list">
+                    <!-- Injected via JS -->
+                </ul>
+                <p id="examples-note" class="examples-note"></p>
+            </div>
+
+            <div class="card-footer">
+                <button id="reset-btn" class="btn-secondary">Start på nytt</button>
+                <button id="download-btn" class="btn-primary">
+                    <i data-lucide="download"></i> Last ned vaska CSV
+                </button>
+            </div>
+        </section>
+
+        <footer>
+            <div class="privacy-badge">
+                <i data-lucide="shield-check"></i>
+                <span>100% lokalt: Ingenting forlet maskina di.</span>
+            </div>
+            <p class="copyright">&copy; 2026 verktøy • asle.dev</p>
+        </footer>
+    </main>
+
+    <script src="skript.js"></script>
+</body>
+
+</html>
