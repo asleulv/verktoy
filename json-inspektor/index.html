@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="no">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>JSON-inspektør | verktøy</title>
+    <meta name="description" content="Sjekk og utforsk JSON-data frå API-lenker eller filer på ein oversiktleg måte.">
+
+    <!-- Google Fonts: Inter & Outfit -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&family=Fira+Code:wght@400;500&display=swap" rel="stylesheet">
+
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+    <div class="glass-background"></div>
+
+    <nav class="top-nav">
+        <a href="../index.html" class="back-link">
+            <i data-lucide="arrow-left"></i>
+            <span>Tilbake til oversikt</span>
+        </a>
+    </nav>
+
+    <main class="tool-container">
+        <header class="tool-header">
+            <div class="icon-badge">
+                <i data-lucide="search-code"></i>
+            </div>
+            <h1>JSON-inspektør</h1>
+            <p class="subtitle">Utforsk JSON-data frå API-lenker, filer eller tekst på ein ryddig og oversiktleg måte.</p>
+        </header>
+
+        <section class="input-section card">
+            <div class="input-tabs">
+                <button class="tab-btn active" data-tab="url">
+                    <i data-lucide="link"></i> API-lenke
+                </button>
+                <button class="tab-btn" data-tab="file">
+                    <i data-lucide="file-up"></i> Last opp fil
+                </button>
+                <button class="tab-btn" data-tab="paste">
+                    <i data-lucide="clipboard-type"></i> Lim inn
+                </button>
+            </div>
+
+            <div class="tab-content active" id="tab-url">
+                <div class="url-input-group">
+                    <input type="url" id="api-url" placeholder="https://api.eksempel.no/data.json" spellcheck="false">
+                    <button id="fetch-btn" class="primary-btn">
+                        <i data-lucide="download"></i> Hent data
+                    </button>
+                </div>
+                <p class="input-hint">Merk: API-en må støtte CORS for at direkte henting skal fungere.</p>
+            </div>
+
+            <div class="tab-content" id="tab-file">
+                <div class="file-drop-zone" id="drop-zone">
+                    <i data-lucide="cloud-upload" class="upload-icon"></i>
+                    <p>Dra og slepp ei JSON-fil her, eller klikk for å velje</p>
+                    <input type="file" id="file-input" accept=".json,application/json" hidden>
+                </div>
+            </div>
+
+            <div class="tab-content" id="tab-paste">
+                <textarea id="json-textarea" placeholder="Lim inn JSON-data her..." spellcheck="false"></textarea>
+                <button id="parse-btn" class="primary-btn">
+                    <i data-lucide="play"></i> Analyser JSON
+                </button>
+            </div>
+        </section>
+
+        <section id="results-section" class="results-section hidden">
+            <div class="toolbar card">
+                <div class="view-toggle">
+                    <button id="view-tree" class="toggle-btn" title="Trevisning">
+                        <i data-lucide="list-tree"></i>
+                    </button>
+                    <button id="view-table" class="toggle-btn" title="Tabellvisning">
+                        <i data-lucide="table"></i>
+                    </button>
+                    <button id="view-schema" class="toggle-btn active" title="Struktur">
+                        <i data-lucide="layout-template"></i>
+                    </button>
+                </div>
+                <div class="search-box">
+                    <i data-lucide="search"></i>
+                    <input type="text" id="json-search" placeholder="Søk i nøklar eller verdiar...">
+                </div>
+                <div class="actions">
+                    <button id="expand-all" class="secondary-btn" title="Utvid alle">
+                        <i data-lucide="maximize-2"></i>
+                    </button>
+                    <button id="collapse-all" class="secondary-btn" title="Slå saman alle">
+                        <i data-lucide="minimize-2"></i>
+                    </button>
+                    <button id="copy-json" class="secondary-btn" title="Kopier JSON">
+                        <i data-lucide="copy"></i>
+                    </button>
+                </div>
+            </div>
+
+            <div id="json-viewer-container" class="card viewer-card">
+                <!-- JSON Tree will be rendered here -->
+                <div id="json-viewer" class="json-tree"></div>
+            </div>
+        </section>
+
+        <div id="loader" class="loader-overlay hidden">
+            <div class="loader-spinner"></div>
+            <p>Hentar data...</p>
+        </div>
+
+        <div id="error-toast" class="toast hidden">
+            <i data-lucide="alert-circle"></i>
+            <span id="error-message">Noko gjekk galt</span>
+        </div>
+    </main>
+
+    <script src="script.js"></script>
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+
+</html>
