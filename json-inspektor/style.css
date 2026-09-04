@@ -316,6 +316,59 @@ textarea {
     position: relative;
 }
 
+:root {
+    --primary: var(--text-primary);
+    --primary-hover: var(--text-primary);
+    --secondary: var(--text-secondary);
+    --secondary-hover: var(--text-primary);
+    --glass-blur: none;
+    --transition-speed: 0.15s;
+}
+
+.glass-background {
+    display: none !important;
+}
+
+body {
+    font-family: var(--font-mono) !important;
+    background-color: var(--bg-color) !important;
+    color: var(--text-primary) !important;
+    min-height: 100vh;
+    padding: 2rem 0;
+}
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: var(--font-heading) !important;
+    background: none !important;
+    -webkit-text-fill-color: initial !important;
+    color: var(--text-primary) !important;
+}
+
+.main-icon, .upload-icon, .icon {
+    color: var(--text-primary) !important;
+    filter: none !important;
+}
+
+.back-link {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.5rem;
+    color: var(--text-primary) !important;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.85rem;
+    background: var(--card-bg) !important;
+    padding: 0.4rem 0.85rem !important;
+    border-radius: 0 !important;
+    border: 2px solid var(--border-color) !important;
+    box-shadow: none !important;
+}
+
+.back-link:hover {
+    background: var(--card-bg-hover) !important;
+    transform: none !important;
+}
+
 .schema-mode .json-line::before {
     content: '';
     position: absolute;

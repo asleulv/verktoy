@@ -8,11 +8,13 @@
     <meta name="description"
         content="Ei samling av enkle, anonyme og kraftige verktøy til daglig bruk. Ingen innlogging, ingen sporing.">
 
-    <!-- Google Fonts: Inter & Outfit -->
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Theme initialization script (prevents FOUC) -->
+    <script src="theme.js"></script>
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -21,107 +23,124 @@
 </head>
 
 <body>
-    <div class="glass-background"></div>
+    <!-- Mechanical Header & Navigation -->
+    <div class="top-bar">
+        <div class="top-bar-branding">
+            <i data-lucide="wrench" class="header-logo-icon"></i>
+            <h1>verktøy</h1>
+        </div>
+        <button class="theme-toggle-btn" type="button" aria-label="Bytt tema">
+            <span class="theme-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-svg"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            </span>
+            <span class="theme-text">NATT</span>
+        </button>
+    </div>
 
     <main class="dashboard-container">
         <header>
-            <div class="logo-container">
-                <i data-lucide="wrench" class="logo-icon"></i>
-                <h1>verktøy</h1>
-            </div>
-            <p class="subtitle">Eit utval av praktiske verktøy for enkle, små, anonyme og ikkje-innlogga aktivitetar. All databehandling skjer lokalt i din egen nettleser.</p>
+            <div class="header-meta">brukarverktøy utan sporing</div>
+            <p class="subtitle">Eit utval av praktiske verktøy for enkle, anonyme og ikkje-innlogga aktivitetar. All databehandling skjer 100% lokalt i din egen nettlesar utan innlogging eller ekstern sporing.</p>
         </header>
 
         <section class="app-grid">
-            <!-- App 1: Data Converter -->
+            <!-- App 01: Data Converter -->
             <a href="data-konvertering/index.html" class="app-card">
-                <div class="app-icon-wrapper">
-                    <i data-lucide="refresh-cw" class="app-icon"></i>
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">
+                        <i data-lucide="refresh-cw"></i>
+                    </div>
                 </div>
                 <div class="app-info">
                     <h2>Datakonvertering</h2>
                     <p>Konverter mellom CSV, JSON, Excel og ODS. Filtrer kolonner og vask data før eksport.</p>
                 </div>
-
             </a>
 
-            <!-- App 2: Image Compression -->
+            <!-- App 02: Image Compression -->
             <a href="bilde-komprimering/index.html" class="app-card">
-                <div class="app-icon-wrapper">
-                    <i data-lucide="image" class="app-icon"></i>
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">
+                        <i data-lucide="image"></i>
+                    </div>
                 </div>
                 <div class="app-info">
                     <h2>Bilde-komprimering</h2>
-                    <p>Reduser filstorleiken på bileta dine ved å justere kvalitet og storleik. All databehandling skjer lokalt.</p>
+                    <p>Reduser filstorleiken på bileta dine ved å justere kvalitet og storleik. Alt skjer lokalt.</p>
                 </div>
-
             </a>
 
-            <!-- App 3: Table Viewer -->
+            <!-- App 03: Table Viewer -->
             <a href="tabellvisning/index.html" class="app-card">
-                <div class="app-icon-wrapper">
-                    <i data-lucide="table-2" class="app-icon"></i>
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">
+                        <i data-lucide="table-2"></i>
+                    </div>
                 </div>
                 <div class="app-info">
                     <h2>Tabellvisning</h2>
                     <p>Gjer uoversiktlege datafiler om til tydelege, søkbare tabellar. Støttar CSV, JSON og Excel.</p>
                 </div>
-
             </a>
 
-            <!-- App 4: Text Cleaning -->
+            <!-- App 04: Text Cleaning -->
             <a href="tekst-rydding/index.html" class="app-card">
-                <div class="app-icon-wrapper">
-                    <i data-lucide="file-text" class="app-icon"></i>
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">
+                        <i data-lucide="file-text"></i>
+                    </div>
                 </div>
                 <div class="app-info">
                     <h2>Tekst-rydding</h2>
                     <p>Vask tekst, fjern HTML-taggar eller konverter mellom Markdown og HTML på sekundet.</p>
                 </div>
-
             </a>
 
-            <!-- App 5: Prompt Helper -->
+            <!-- App 05: Prompt Helper -->
             <a href="prompt-hjelpar/index.html" class="app-card">
-                <div class="app-icon-wrapper">
-                    <i data-lucide="sparkles" class="app-icon"></i>
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">
+                        <i data-lucide="terminal-square"></i>
+                    </div>
                 </div>
                 <div class="app-info">
                     <h2>Prompt-hjelpar</h2>
                     <p>Bygg betre prompts til AI ved å bruke profesjonelle rammeverk. Strukturert for suksess.</p>
                 </div>
-
             </a>
 
-            <!-- App 6: Mappe-tre -->
+            <!-- App 06: Mappe-tre -->
             <a href="mappe-tre/index.html" class="app-card">
-                <div class="app-icon-wrapper">
-                    <i data-lucide="folder-tree" class="app-icon"></i>
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">
+                        <i data-lucide="folder-tree"></i>
+                    </div>
                 </div>
                 <div class="app-info">
                     <h2>Mappe-tre</h2>
-                    <p>Få ei fullstendig visuell oversikt over mappestrukturen din. Perfekt for å lære AI-en korleis prosjektet ditt er oppbygd.</p>
+                    <p>Få ei fullstendig visuell oversikt over mappestrukturen din. Generer strukturtre på sekundet.</p>
                 </div>
-
             </a>
 
-
-            <!-- App 8: Unix-hjelpar -->
+            <!-- App 07: Unix-hjelpar -->
             <a href="unix-hjelpar/index.html" class="app-card">
-                <div class="app-icon-wrapper">
-                    <i data-lucide="terminal" class="app-icon"></i>
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">
+                        <i data-lucide="terminal"></i>
+                    </div>
                 </div>
                 <div class="app-info">
                     <h2>Unix-hjelpar</h2>
                     <p>Få full kontroll på terminalen med ein visuell CHMOD-kalkulator og søkbar oversikt over Unix-kommandoar.</p>
                 </div>
-
             </a>
 
-            <!-- App 10: ABL-hjelpar -->
+            <!-- App 08: ABL-hjelpar -->
             <a href="progress-openedge-abl/index.html" class="app-card">
-                <div class="app-icon-wrapper">
-                    <i data-lucide="code-2" class="app-icon"></i>
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">
+                        <i data-lucide="code-2"></i>
+                    </div>
                 </div>
                 <div class="app-info">
                     <h2>ABL-hjelpar</h2>
@@ -129,22 +148,25 @@
                 </div>
             </a>
 
-            <!-- App 9: PDF-kvern -->
+            <!-- App 09: PDF-kvern -->
             <a href="pdf-kvern/index.html" class="app-card">
-                <div class="app-icon-wrapper">
-                    <i data-lucide="scissors" class="app-icon"></i>
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">
+                        <i data-lucide="scissors"></i>
+                    </div>
                 </div>
                 <div class="app-info">
                     <h2>PDF-kvern</h2>
-                    <p>Maksimalt personvern for dine dokument. Slå saman, splitt eller slett sider frå PDF-ar rett i nettlesaren din.</p>
+                    <p>Maksimalt personvern for dine dokument. Slå saman, splitt eller slett sider frå PDF-ar rett i nettlesaren.</p>
                 </div>
-
             </a>
 
-            <!-- App 11: Liste-vaskar -->
+            <!-- App 10: Liste-vaskar -->
             <a href="liste-vaskar/index.html" class="app-card">
-                <div class="app-icon-wrapper">
-                    <i data-lucide="filter" class="app-icon"></i>
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">
+                        <i data-lucide="filter"></i>
+                    </div>
                 </div>
                 <div class="app-info">
                     <h2>Liste-vaskar</h2>
@@ -152,45 +174,48 @@
                 </div>
             </a>
 
-            <!-- App 12: Excel-splittar -->
+            <!-- App 11: Excel-splittar -->
             <a href="excel-splittar/index.html" class="app-card">
-                <div class="app-icon-wrapper">
-                    <i data-lucide="split-square-horizontal" class="app-icon"></i>
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">
+                        <i data-lucide="split-square-horizontal"></i>
+                    </div>
                 </div>
                 <div class="app-info">
                     <h2>Excel-splittar</h2>
-                    <p>Del opp gigantiske Excel-filer i fleire, handterbare bitar. Du vel overskrifts-oppførsel og lastar ned alt i éi ZIP-fil.</p>
+                    <p>Del opp gigantiske Excel-filer i fleire, handterbare bitar. Vel overskriftsoppførsel og last ned alt i éi ZIP-fil.</p>
                 </div>
             </a>
 
-            <!-- App 13: JSON-inspektør -->
+            <!-- App 12: JSON-inspektør -->
             <a href="json-inspektor/index.html" class="app-card">
-                <div class="app-icon-wrapper">
-                    <i data-lucide="search-code" class="app-icon"></i>
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">
+                        <i data-lucide="search-code"></i>
+                    </div>
                 </div>
                 <div class="app-info">
                     <h2>JSON-inspektør</h2>
                     <p>Sjekk JSON-data frå API-lenker eller filer på ein ryddig måte. Sjekk struktur, søk i verdiar og utforsk data direkte.</p>
                 </div>
             </a>
+
+            <!-- App 13: Akkord-hjelpar -->
+            <a href="akkord-hjelpar/index.html" class="app-card">
+                <div class="app-card-header">
+                    <div class="app-icon-wrapper">
+                        <i data-lucide="music"></i>
+                    </div>
+                </div>
+                <div class="app-info">
+                    <h2>Akkord-hjelpar</h2>
+                    <p>Verktøy for transponering og akkord-visning for musikkarbeid og akkordark.</p>
+                </div>
+            </a>
         </section>
 
         <footer>
-            <div class="status-grid">
-                <div class="status-item">
-                    <i data-lucide="shield-check" style="width: 14px; height: 14px; color: #10b981;"></i>
-                    <span>100% Privat</span>
-                </div>
-                <div class="status-item">
-                    <i data-lucide="zap" style="width: 14px; height: 14px; color: #fbbf24;"></i>
-                    <span>Lynraskt</span>
-                </div>
-                <div class="status-item">
-                    <i data-lucide="user-minus" style="width: 14px; height: 14px; color: #f87171;"></i>
-                    <span>Ingen innlogging</span>
-                </div>
-            </div>
-            <p style="margin-top: 3rem; color: var(--text-secondary);">&copy; 2026 verktøy • asle.dev</p>
+            <p class="copyright-text">&copy; 2026 VERKTØY ARCHIVE • ASLE.DEV</p>
         </footer>
     </main>
 

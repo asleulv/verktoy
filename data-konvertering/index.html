@@ -8,11 +8,13 @@
     <meta name="description"
         content="Eit alt-i-eitt verktøy for å konvertere mellom CSV, JSON, Excel og PDF med fullt kolonneval.">
 
-    <!-- Google Fonts: Inter & Outfit -->
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Theme script -->
+    <script src="../theme.js"></script>
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
@@ -23,22 +25,28 @@
     <!-- SheetJS for Excel generation & parsing -->
     <script src="https://cdnjs.cloudflare.com/ajax/libs/xlsx/0.18.5/xlsx.full.min.js"></script>
 
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="glass-background"></div>
+    <div class="top-bar">
+        <a href="../index.html" class="back-link">
+            <i data-lucide="arrow-left"></i>
+            <span>Tilbake til oversikt</span>
+        </a>
+        <button class="theme-toggle-btn" type="button" aria-label="Bytt tema">
+            <span class="theme-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-svg"><path d="M12 3a6 6 0 0 0 9 9 9 9 0 1 1-9-9Z"/></svg>
+            </span>
+            <span class="theme-text">NATT</span>
+        </button>
+    </div>
 
     <main class="app-container">
         <header>
-            <div class="nav-back">
-                <a href="../index.html" class="back-link">
-                    <i data-lucide="arrow-left"></i>
-                    <span>Alle verktøy</span>
-                </a>
-            </div>
             <div class="logo-area">
-                <i data-lucide="refresh-cw" class="main-icon rotate-icon"></i>
+                <i data-lucide="refresh-cw" class="main-icon"></i>
                 <h1>Datakonvertering</h1>
             </div>
             <p class="subtitle">Eit kraftig verktøy for filkonvertering og datavasking.
@@ -124,10 +132,6 @@
         </section>
 
         <footer>
-            <div class="privacy-badge">
-                <i data-lucide="shield-check"></i>
-                <span>100% lokalt: Ingenting forlet maskina di.</span>
-            </div>
             <p class="copyright">&copy; 2026 verktøy • asle.dev</p>
         </footer>
     </main>

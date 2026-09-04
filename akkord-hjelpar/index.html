@@ -8,31 +8,39 @@
     <meta name="description"
         content="Lim inn tekst med akkordar og transponer dei live til den tonearten du vil ha. Lokalt og privat.">
 
-    <!-- Google Fonts: Inter & Outfit -->
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Outfit:wght@600;700&family=Fira+Code:wght@400;500&display=swap"
-        rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Plus+Jakarta+Sans:wght@500;600;700;800&display=swap" rel="stylesheet">
+
+    <!-- Theme script -->
+    <script src="../theme.js"></script>
 
     <!-- Lucide Icons -->
     <script src="https://unpkg.com/lucide@latest"></script>
 
+    <link rel="stylesheet" href="../style.css">
     <link rel="stylesheet" href="style.css">
 </head>
 
 <body>
-    <div class="glass-background"></div>
+    <div class="top-bar">
+        <a href="../index.html" class="back-link">
+            <i data-lucide="arrow-left"></i>
+            <span>Tilbake til oversikt</span>
+        </a>
+        <button class="theme-toggle-btn" type="button" aria-label="Bytt tema">
+            <span class="theme-icon-container">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" class="theme-icon-svg"><path d="M12 3a6 6 0 0 0 9 9 9 0 1 1-9-9Z"/></svg>
+            </span>
+            <span class="theme-text">NATT</span>
+        </button>
+    </div>
 
     <main class="app-container">
         <header>
-            <div class="nav-back">
-                <a href="../index.html" class="back-link">
-                    <i data-lucide="arrow-left"></i>
-                    <span>Alle verktøy</span>
-                </a>
-            </div>
             <div class="logo-area">
-                <i data-lucide="music" class="main-icon pulse-soft"></i>
+                <i data-lucide="music" class="main-icon"></i>
                 <h1>Akkord-hjelpar</h1>
             </div>
             <p class="subtitle">Lim inn teksten din med akkordar her for å transponere dei live. Me bevarer alle mellomrom slik at akkordane framleis står på rett plass.</p>
@@ -78,10 +86,6 @@
         </section>
 
         <footer>
-            <div class="privacy-badge">
-                <i data-lucide="shield-check"></i>
-                <span>All tekstbehandling skjer lokalt i din nettleser. Ingen data vert sendt ut.</span>
-            </div>
             <p class="copyright">&copy; 2026 verktøy • asle.dev</p>
         </footer>
     </main>
